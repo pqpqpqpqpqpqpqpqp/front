@@ -1,0 +1,33 @@
+.signContainer {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.signForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.signForm input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.signForm button {
+    padding: 10px;
+    background-color: #2d6cdf;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.signForm button:hover {
+    background-color: #1a4fbf;
+}
