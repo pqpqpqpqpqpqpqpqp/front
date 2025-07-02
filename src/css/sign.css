@@ -1,4 +1,5 @@
-.signContainer {
+/* 로그인 + 회원가입 */
+.sign_container {
     max-width: 400px;
     margin: 40px auto;
     padding: 20px;
@@ -7,19 +8,19 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.signForm {
+.sign_form {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.signForm input {
+.sign_form input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
 }
 
-.signForm button {
+.sign_form button {
     padding: 10px;
     background-color: #2d6cdf;
     color: white;
@@ -28,6 +29,6 @@
     cursor: pointer;
 }
 
-.signForm button:hover {
+.sign_form button:hover {
     background-color: #1a4fbf;
 }

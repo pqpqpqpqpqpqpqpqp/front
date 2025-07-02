@@ -1,0 +1,69 @@
+/* 프로필 페이지 */
+.profile_title {
+  text-align: center;
+}
+
+.profile_container {
+  text-align: left;
+  background: white;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile_header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_pic {
+  width: 96px;
+  height: 96px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.profile_info {
+  height: 96px;
+  flex-grow: 1;
+}
+
+.profile_name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.profile_id {
+  color: gray;
+  font-size: 14px;
+}
+
+.profile_follow_cnt {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #555;
+}
+
+/* 내 컨텐츠 */
+.profile_tab_menus div.active_tab {
+  font-weight: bold;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.profile_tab_menus {
+  display: flex;
+  margin-top: 30px;
+}
+
+.profile_tab_menus div {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: #777;
+}

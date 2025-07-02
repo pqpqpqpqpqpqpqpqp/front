@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../css/sign.css';
+import 'css/sign.css';
 
 function Login() {
     const [userId, setUserId] = useState('');
@@ -39,9 +39,9 @@ function Login() {
     };
 
     return (
-        <div className="signContainer">
+        <div className="sign_container">
             <h2>로그인</h2>
-            <form onSubmit={handleLogin} className="signForm">
+            <form onSubmit={handleLogin} className="sign_form">
                 <input
                     type="text"
                     value={userId}

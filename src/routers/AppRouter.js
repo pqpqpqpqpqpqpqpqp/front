@@ -9,9 +9,9 @@ import Search from "../pages/Search";
 import Write from "../pages/Write";
 import Like from "../pages/Like";
 import Notification from "../pages/Notification";
-import Profile from "../pages/Profile";
+import Profile from "../pages/profile/Profile";
 
-import '../css/app.css';
+import 'css/app.css';
 
 function AppRouter() {
     const location = useLocation();
@@ -23,44 +23,47 @@ function AppRouter() {
     };
 
     return (
-        <div className="appContainer">
-            <nav className="navi">
-                <div className="menuGroup">
+        <div className="app_container">
+            <nav className="app_navi">
+                <div className="menu_group">
                     <Link to="/">
-                        <HiHome className={`icon ${current === '/' ? 'active' : ''}`} title="홈" />
+                        <HiHome className={`nav_icon ${current === '/' ? 'active' : ''}`} title="홈" />
                     </Link>
                     <Link to="/search">
-                        <HiSearch className={`icon ${current === '/search' ? 'active' : ''}`} title="검색" />
+                        <HiSearch className={`nav_icon ${current === '/search' ? 'active' : ''}`} title="검색" />
                     </Link>
                     <Link to="/write">
-                        <HiPlusCircle className={`icon ${current === '/write' ? 'active' : ''}`} title="작성" />
+                        <HiPlusCircle className={`nav_icon ${current === '/write' ? 'active' : ''}`} title="작성" />
                     </Link>
                     <Link to="/notification">
-                        <HiBell className={`icon ${current === '/notification' ? 'active' : ''}`} title="알림" />
+                        <HiBell className={`nav_icon ${current === '/notification' ? 'active' : ''}`} title="알림" />
                     </Link>
                     <Link to="/profile">
-                        <HiUser className={`icon ${current === '/profile' ? 'active' : ''}`} title="프로필" />
+                        <HiUser className={`nav_icon ${current === '/profile' ? 'active' : ''}`} title="프로필" />
                     </Link>
                 </div>
 
-                <div className="bottomMenu">
-                    <div className="dropdown">
+                <div className="menu_bottom">
+                    <div className="setting_dropdown">
                         <HiMenu
-                            className={`icon ${current === '/setting' ? 'active' : ''}`}
+                            className={`nav_icon ${current === '/setting' ? 'active' : ''}`}
                             title="설정"
                             onClick={toggleDropdown}
                         />
                         {menuDropdown && (
-                            <div className="dropdownContent">
+                            <div className="setting_content">
                                 <Link to="/sign/login">로그인</Link>
                                 <Link to="/sign/signup">회원가입</Link>
+                                <Link>허전해서</Link>
+                                <Link>넣은</Link>
+                                <Link>링크</Link>
                             </div>
                         )}
                     </div>
                 </div>
             </nav>
 
-            <div className="context">
+            <div className="app_context">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />} />

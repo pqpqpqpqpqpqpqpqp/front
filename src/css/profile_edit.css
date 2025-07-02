@@ -1,0 +1,125 @@
+/* 프로필 수정 모달창 */
+.profile_edit_btn {
+  width: 100%;
+  margin-top: 30px;
+  padding: 8px 16px;
+  background: #efefef;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.profile_edit_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.profile_edit_card {
+  background: #fff;
+  border-radius: 12px;
+  width: 360px;
+  padding: 24px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Pretendard', sans-serif;
+}
+
+.profile_edit_title {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile_edit_section {
+  margin-bottom: 16px;
+}
+
+.profile_edit_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile_edit_label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.profile_edit_input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 4px 0px;
+  font-size: 14px;
+}
+
+.profile_edit_pic {
+  width: 52px;
+  height: 52px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.profile_edit_switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.profile_edit_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.profile_edit_slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.profile_edit_slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.profile_edit_switch input:checked + .profile_edit_slider {
+  background-color: #0d6efd;
+}
+
+.profile_edit_switch input:checked + .profile_edit_slider::before {
+  transform: translateX(24px);
+}
+
+.profile_edit_submit {
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
