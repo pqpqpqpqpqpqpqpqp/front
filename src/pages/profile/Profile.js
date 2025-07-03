@@ -1,25 +1,30 @@
 import { useState } from 'react';
 import ProfileEdit from './ProfileEdit';
+import ProfileThreadTab from './ProfileThreadTab';
+import ProfileReplyTab from './ProfileReplyTab';
+import ProfileMediaTab from './ProfileMediaTab';
 import 'css/profile.css'
 
 function Profile() {
-  const [activeTab, setActiveTab] = useState('스레드');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentTab, setCurrentTab] = useState('스레드');
+  const [editOpen, setEditOpen] = useState(false);
 
-  const handleSubmit = (e) => {
+  // 페이지 로드시 쿠키에 저장된 userIdx로 id, name, 프로필 사진, 팔로워 수 등등 가져올것 
+
+  const handleEditSubmit = (e) => {
     e.preventDefault();
     // db에 설정 저장
-    setIsModalOpen(false);
+    setEditOpen(false);
   };
 
-  const renderTabContent = () => {
-    switch (activeTab) {
+  const renderTabContext = () => {
+    switch (currentTab) {
       case '스레드':
-        return '내가 작성한 스레드(부모가 없는 스레드만)';
+        return <ProfileThreadTab />;
       case '답글':
-        return '내가 작성한 스레드(부모가 있는 스레드만)';
+        return <ProfileReplyTab />;
       case '미디어':
-        return '내 스레드 이미지 모음';
+        return <ProfileMediaTab />;
       default:
         return null;
     }
@@ -38,36 +43,36 @@ function Profile() {
           </div>
         </div>
 
-        <button className="profile_edit_btn" onClick={() => setIsModalOpen(true)}>
+        <button className="profile_edit_btn" onClick={() => setEditOpen(true)}>
           프로필 수정
         </button>
 
-        {isModalOpen && (
-          <ProfileEdit onClose={() => setIsModalOpen(false)} onSubmit={handleSubmit} />
+        {editOpen && (
+          <ProfileEdit onClose={() => setEditOpen(false)} onSubmit={handleEditSubmit} />
         )}
 
         <div className="profile_tab_menus">
           <div
-            onClick={() => setActiveTab("스레드")}
-            className={activeTab === "스레드" ? "active_tab" : ""}
+            onClick={() => setCurrentTab("스레드")}
+            className={currentTab === "스레드" ? "active_tab" : ""}
           >
             스레드
           </div>
           <div
-            onClick={() => setActiveTab("답글")}
-            className={activeTab === "답글" ? "active_tab" : ""}
+            onClick={() => setCurrentTab("답글")}
+            className={currentTab === "답글" ? "active_tab" : ""}
           >
             답글
           </div>
           <div
-            onClick={() => setActiveTab("미디어")}
-            className={activeTab === "미디어" ? "active_tab" : ""}
+            onClick={() => setCurrentTab("미디어")}
+            className={currentTab === "미디어" ? "active_tab" : ""}
           >
             미디어
           </div>
         </div>
 
-        <div className="profile_tab_context">{renderTabContent()}</div>
+        <div className="profile_tab_context">{renderTabContext()}</div>
       </div>
     </div>
   );

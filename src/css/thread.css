@@ -1,0 +1,62 @@
+.thread-card {
+    display: grid;
+    grid-template-rows: 24px 24px 24px 24px;
+    grid-template-columns: 40px 1fr;
+    grid-template-areas:
+        "user-img header"
+        ". content"
+        ". ."
+        ". actions";
+    background: #fff;
+    padding: 15px 20px;
+}
+
+.thread-user-img {
+    grid-area: user-img;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-top: 6px;
+}
+
+.thread-header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.thread-menu {
+    cursor: pointer;
+    color: #555;
+}
+
+.thread-content {
+    grid-area: content;
+    font-size: 16px;
+    color: #222;
+}
+
+.thread-actions {
+    grid-area: actions;
+    display: flex;
+    gap: 20px;
+    color: #666;
+}
+
+.thread-actions-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.thread-actions-item svg {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.thread-actions-item svg:hover {
+    color: #007bff;
+}

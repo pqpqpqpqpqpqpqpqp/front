@@ -1,0 +1,21 @@
+.thread-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.thread-pair {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.thread-pair-connector {
+    position: absolute;
+    left: 35px;
+    top: 64px;
+    width: 2px;
+    height: 70px;
+    background-color: #ccc;
+}

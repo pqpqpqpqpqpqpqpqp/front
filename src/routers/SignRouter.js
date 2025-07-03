@@ -5,7 +5,7 @@ import Signup from '../pages/login/Signup';
 function SignRouter() {
 
     return (
-        <div>
+        <div className="sign_context">
             <Routes>
                 <Route path="/sign/login" element={<Login />} />
                 <Route path="/sign/signup" element={<Signup />} />

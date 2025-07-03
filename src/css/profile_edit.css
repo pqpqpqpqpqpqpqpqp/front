@@ -1,14 +1,4 @@
 /* 프로필 수정 모달창 */
-.profile_edit_btn {
-  width: 100%;
-  margin-top: 30px;
-  padding: 8px 16px;
-  background: #efefef;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 .profile_edit_container {
   position: fixed;
   top: 0;
