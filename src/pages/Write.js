@@ -1,5 +1,7 @@
+import ThreadWrite from "components/ThreadWrite";
+
 function Write() {
-  return <h1>글 작성</h1>;
+  return (<ThreadWrite />);
 }
 
 export default Write;

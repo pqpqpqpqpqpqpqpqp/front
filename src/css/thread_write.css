@@ -1,0 +1,98 @@
+.thread-write-box {
+    min-width: 400px;
+    margin: auto;
+    background-color: white;
+    border-radius: 12px;
+    font-family: sans-serif;
+    border: 1px solid #ddd;
+}
+
+.thread-write-box-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.thread-write-cancel {
+    justify-self: start;
+    color: #444;
+    cursor: pointer;
+}
+
+.thread-write-title {
+    justify-self: center;
+}
+
+.thread-write-box-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.thread-write-card {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+}
+
+.thread-write-card-img {
+    width: 48px;
+    height: 48px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.thread-write-card-user-name {
+    font-size: 14px;
+    display: flex;
+    font-weight: bold;
+}
+
+.topic-add {
+    color: #3b82f6;
+    cursor: pointer;
+}
+
+.thread-write-content textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    min-height: 60px;
+    outline: none;
+}
+
+.thread-write-attachment {
+    display: flex;
+    gap: 12px;
+    color: #666;
+    font-size: 20px;
+}
+
+.thread-write-add {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.thread-write-box-post {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 13px;
+    color: #999;
+}
+
+.thread-write-box-post button {
+    background: #ccc;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: not-allowed;
+}

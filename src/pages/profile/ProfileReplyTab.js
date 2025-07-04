@@ -1,5 +1,5 @@
 import Thread from "components/Thread";
-import 'css/profile_tab.css'
+import 'css/profile_thread_tab.css'
 
 function ProfileReplyTab() {
   const threads = [
