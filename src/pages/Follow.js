@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 import Thread from "components/Thread";
-import 'css/profile_thread_tab.css'
+import 'css/follow.css';
 
-function ProfileThreadTab() {
-  // 내 스레드중 최상위 스레드(부모가 없는 스레드)를 보여주는 페이지
-  // 데이터 자체를 그렇게 받아와서 보여줄 것
-  // 최상위 스레드 하나씩만 보여주는게 좋아보임
+function Follow() {
+  // 내가 팔로우한 유저의 스레드를 가져올 페이지
+  // 부모나 자식말고 그사람의 스레드만 가져올것
+  // 그리고 전체 스레드를 다 가져오는건 너무 무거우므로 적절한 양을 잘라 가져오고
+  // 스크롤하여 더 보여줄 필요가 생기면 추가로 가져와서 보여줄것 
+  // 현재 데이터는 임시로, 추후 변경 필요
+  
   const threads = [
     {
       id: 1,
@@ -56,15 +60,24 @@ function ProfileThreadTab() {
     }
   ];
 
+  useEffect(() => {
+    console.log("페이지 로딩")
+  }, [])
+
   return (
-    <ul className="thread-list">
-      {threads.map((thread) => (
-        <li key={thread.id}>
-          <Thread thread={thread} />
-        </li>
-      ))}
-    </ul>
+    <div className="thread-container">
+      <div className="profile_title">
+        <h3>팔로우</h3>
+      </div>
+      <ul className="thread-list">
+        {threads.map((thread) => (
+          <li key={thread.id}>
+            <Thread thread={thread} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export default ProfileThreadTab;
+export default Follow;

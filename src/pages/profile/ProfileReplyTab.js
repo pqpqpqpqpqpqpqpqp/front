@@ -2,6 +2,10 @@ import Thread from "components/Thread";
 import 'css/profile_thread_tab.css'
 
 function ProfileReplyTab() {
+  // 내 스레드중 답글 스레드(부모가 있는 스레드)를 보여주는 페이지
+  // 데이터 자체를 그렇게 받아와서 보여줄 것
+  // db 검색시 부모가 있는 내 스레드를 검색한 후, 그것의 부모스레드도 가져올것
+  // 현재는 임시로 만든 데이터, 추후 변경 필요
   const threads = [
     {
       id: 1,

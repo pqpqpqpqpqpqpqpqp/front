@@ -6,16 +6,6 @@
     padding: 0;
 }
 
-.thread-pair {
-    position: relative;
+.thread-list li {
     border-bottom: 1px solid #ddd;
-}
-
-.thread-pair-connector {
-    position: absolute;
-    left: 38px;
-    top: 64px;
-    width: 2px;
-    height: 70px;
-    background-color: #ccc;
 }

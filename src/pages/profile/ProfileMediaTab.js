@@ -1,19 +1,12 @@
 import 'css/profile_media_tab.css'
 
 function ProfileMediaTab() {
-  const images = null;
+  // 내 스레드중 이미지가 있는 스레드를 보여주는 페이지
+  // 갈아엎을 필요 있음
 
   return (
     <div className="media-tab">
-      {Array.isArray(images) && images.length > 0 ? (
-        <div className="media-grid">
-          {images.map((src, index) => (
-            <img key={index} src={src} alt={index} className="media-item" />
-          ))}
-        </div>
-      ) : (
-        <div className="media-no-item">이미지 없음</div>
-      )}
+      공사중
     </div>
   );
 }
