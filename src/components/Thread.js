@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { HiOutlineHeart, HiOutlineChat, HiOutlinePaperAirplane, HiOutlineDotsHorizontal } from "react-icons/hi";
 import { HiOutlineArrowPath } from "react-icons/hi2"
 import 'css/thread.css'
 
-const Thread = ({ thread }) => (
+const Thread = ({ thread }) => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleDelete = () => {
+    console.log("게시글 삭제 예정")
+  }
+
   <div className="thread-card">
     <div className="thread-user-img" />
     <div className="thread-card-body">
@@ -12,8 +19,13 @@ const Thread = ({ thread }) => (
           {thread.hashtag && <div className="thread-hashtag">&gt;&nbsp;{thread.hashtag}</div>}
           <div className="thread-date">{thread.createdAt}</div>
         </div>
-        <div className="thread-menu">
+        <div className="thread-menu" onClick={() => setShowMenu(!showMenu)}>
           <HiOutlineDotsHorizontal />
+          {showMenu && (
+            <div className="thread-menu-dropdown">
+              <button onClick={handleDelete}>삭제</button>
+            </div>
+          )}
         </div>
       </div>
       <div className="thread-content">{thread.content}</div>
@@ -35,6 +47,6 @@ const Thread = ({ thread }) => (
       </div>
     </div>
   </div>
-);
+};
 
 export default Thread;
