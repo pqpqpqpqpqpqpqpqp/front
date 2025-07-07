@@ -9,11 +9,8 @@ function Profile() {
   const [currentTab, setCurrentTab] = useState('스레드');
   const [editOpen, setEditOpen] = useState(false);
 
-  // 페이지 로드시 쿠키에 저장된 userIdx로 id, name, 프로필 사진, 팔로워 수 등등 가져올것 
-
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    // db에 설정 저장
     setEditOpen(false);
   };
 

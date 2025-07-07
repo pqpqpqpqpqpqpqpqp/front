@@ -6,10 +6,10 @@ import {
 
 import Home from "../pages/Home";
 import Search from "../pages/Search";
-import Write from "../pages/Write";
 import Like from "../pages/Like";
 import Notification from "../pages/Notification";
 import Profile from "../pages/profile/Profile";
+import ThreadWrite from "components/ThreadWrite";
 
 import 'css/app.css';
 
@@ -17,6 +17,7 @@ function AppRouter() {
     const location = useLocation();
     const current = location.pathname;
     const [menuDropdown, setMenuDropdown] = useState(false);
+    const [writeOpen, setWriteOpen] = useState(false);
 
     const toggleDropdown = () => {
         setMenuDropdown(!menuDropdown);
@@ -32,9 +33,7 @@ function AppRouter() {
                     <Link to="/search">
                         <HiSearch className={`nav_icon ${current === '/search' ? 'active' : ''}`} title="검색" />
                     </Link>
-                    <Link to="/write">
-                        <HiPlusCircle className={`nav_icon ${current === '/write' ? 'active' : ''}`} title="작성" />
-                    </Link>
+                    <HiPlusCircle className='nav_icon' title="작성" onClick={() => setWriteOpen(true)}/>
                     <Link to="/notification">
                         <HiBell className={`nav_icon ${current === '/notification' ? 'active' : ''}`} title="알림" />
                     </Link>
@@ -67,11 +66,14 @@ function AppRouter() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />} />
-                    <Route path="/write" element={<Write />} />
                     <Route path="/like" element={<Like />} />
                     <Route path="/notification" element={<Notification />} />
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
+
+                {writeOpen && (
+                    <ThreadWrite onClose={() => setWriteOpen(false)} />
+                )}
             </div>
         </div>
     );

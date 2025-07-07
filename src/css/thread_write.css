@@ -1,5 +1,20 @@
+.thread-write-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
 .thread-write-box {
-    min-width: 400px;
+    position: relative;
+    top: -200px;
+    min-width: 480px;
     margin: auto;
     background-color: white;
     border-radius: 12px;
@@ -47,52 +62,75 @@
     border-radius: 50%;
 }
 
+.thread-write-card-top {
+    display: flex;
+}
+
 .thread-write-card-user-name {
     font-size: 14px;
     display: flex;
     font-weight: bold;
 }
 
-.topic-add {
+.thread-write-topic-add {
+    border: none;
+    outline: none;
+    font-size: 14px;
     color: #3b82f6;
     cursor: pointer;
 }
 
+.thread-write-content {
+    padding: 5px 0px 0px 0px;
+}
+
 .thread-write-content textarea {
     width: 100%;
+    padding: 0px;
     border: none;
     resize: none;
-    font-size: 14px;
-    min-height: 60px;
     outline: none;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.thread-image-preview button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }
 
 .thread-write-attachment {
     display: flex;
+    align-items: center;
     gap: 12px;
     color: #666;
     font-size: 20px;
 }
 
-.thread-write-add {
-    font-size: 13px;
-    color: #aaa;
+.thread-write-attachment svg {
+    cursor: pointer;
 }
 
-.thread-write-box-post {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 13px;
-    color: #999;
+.thread-write-emoji {
+    position: absolute;
 }
 
-.thread-write-box-post button {
-    background: #ccc;
-    border: none;
+.thread-write-post {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
     padding: 6px 16px;
-    border-radius: 20px;
-    color: white;
+    font-size: 14px;
+    color: #333;
     font-weight: bold;
-    cursor: not-allowed;
+}
+
+.thread-write-post.disabled {
+    color: #999;
+    cursor: default;
 }

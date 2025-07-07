@@ -1,14 +1,14 @@
 import 'css/profile_edit.css'
 
 function ProfileEdit({ onClose, onSubmit }) {
-  const handleOverlayClick = (e) => {
+  const handleEditClose = (e) => {
     if (e.target.classList.contains("profile_edit_container")) {
       onClose();
     }
   };
 
   return (
-    <div className="profile_edit_container" onClick={handleOverlayClick}>
+    <div className="profile_edit_container" onClick={handleEditClose}>
       <div className="profile_edit_card">
         <h2 className="profile_edit_title">프로필 수정</h2>
 
