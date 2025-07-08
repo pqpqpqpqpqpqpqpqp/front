@@ -1,13 +1,12 @@
-.thread-card {
+.thread-reply-card {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: grid;
-    grid-template-columns: 51px 1fr;
-    grid-template-rows: 1fr;
-    background: #fff;
-    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 30px;
 }
 
-.thread-user-img {
+.thread-reply-user-img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -16,59 +15,64 @@
     cursor: pointer;
 }
 
-.thread-header {
-    display: flex;
-    align-items: baseline;
+.thread-reply-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 10px;
     font-weight: bold;
     font-size: 16px;
     gap: 6px;
 }
 
-.thread-user-id {
+.thread-reply-user-info {
+    display: flex;
+    gap: 10px;
+}
+
+.thread-reply-user-id {
     font-weight: bold;
     color: #222;
     cursor: pointer;
 }
 
-.thread-hashtag {
+.thread-reply-hashtag {
     font-weight: bold;
     color: #222;
 }
 
-.thread-date {
+.thread-reply-date {
     color: #aaa;
 }
 
-.thread-menu {
+.thread-reply-menu {
     cursor: pointer;
     color: #888;
 }
 
-.thread-content {
+.thread-reply-content {
     max-width: 480px;
     font-size: 16px;
     color: #222;
     padding-bottom: 10px;
 }
 
-.thread-actions {
+.thread-reply-actions {
     display: flex;
     gap: 20px;
     color: #666;
     font-size: 18px;
 }
 
-.thread-actions-item {
+.thread-reply-actions-item {
     display: flex;
     align-items: center;
     gap: 4px;
     cursor: pointer;
 }
 
-.thread-actions-item svg {
+.thread-reply-actions-item svg {
     transition: color 0.2s ease;
 }
 
-.thread-actions-item:hover svg {
+.thread-reply-actions-item:hover svg {
     color: #007bff;
 }

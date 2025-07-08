@@ -11,6 +11,7 @@ import Like from "../pages/Like";
 import Notification from "../pages/Notification";
 import Profile from "../pages/profile/Profile";
 import ThreadWrite from "components/ThreadWrite";
+import ThreadDetail from "components/ThreadDetail";
 
 import 'css/app.css';
 
@@ -71,6 +72,7 @@ function AppRouter() {
                     <Route path="/like" element={<Like />} />
                     <Route path="/notification" element={<Notification />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/thread/:id" element={<ThreadDetail />} />
                 </Routes>
 
                 {writeOpen && (

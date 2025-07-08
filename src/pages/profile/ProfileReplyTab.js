@@ -13,7 +13,7 @@ function ProfileReplyTab() {
       content: '4단 쓰레드',
       createdAt: '2025-07-01',
       likes: 6,
-      replies: 2,
+      replies: 3,
       parentId: null
     },
     {
