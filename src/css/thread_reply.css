@@ -1,78 +1,87 @@
 .thread-reply-card {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
-    border-left: 3px solid #ddd;
-    border-radius: 6px;
-    padding: 10px 30px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #ddd;
 }
 
 .thread-reply-user-img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin-top: 4px;
-    cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.thread-reply-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
 }
 
 .thread-reply-header {
-    display: grid;
-    grid-template-columns: 50px 1fr 10px;
-    font-weight: bold;
-    font-size: 16px;
-    gap: 6px;
-}
-
-.thread-reply-user-info {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .thread-reply-user-id {
-    font-weight: bold;
-    color: #222;
-    cursor: pointer;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
 }
 
 .thread-reply-hashtag {
-    font-weight: bold;
-    color: #222;
+  font-weight: 500;
+  color: #4b5563;
 }
 
 .thread-reply-date {
-    color: #aaa;
+  color: #9ca3af;
 }
 
-.thread-reply-menu {
-    cursor: pointer;
-    color: #888;
+.thread-reply-header svg {
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.thread-reply-header svg:hover {
+  color: #000;
 }
 
 .thread-reply-content {
-    max-width: 480px;
-    font-size: 16px;
-    color: #222;
-    padding-bottom: 10px;
+  font-size: 15px;
+  color: #1f2937;
+  line-height: 1.5;
+  white-space: pre-line;
+  margin-bottom: 4px;
 }
 
 .thread-reply-actions {
-    display: flex;
-    gap: 20px;
-    color: #666;
-    font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .thread-reply-actions-item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
+  display: inline-flex;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .thread-reply-actions-item svg {
-    transition: color 0.2s ease;
+  font-size: 16px;
 }
 
-.thread-reply-actions-item:hover svg {
-    color: #007bff;
+.thread-reply-actions-item:hover {
+  color: #2563eb;
 }

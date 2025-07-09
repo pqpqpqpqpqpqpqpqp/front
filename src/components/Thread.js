@@ -18,7 +18,7 @@ const Thread = ({ thread }) => {
   return (
     <div className="thread-card" onClick={moveDetail}>
       <div className="thread-user-img" onClick={moveProfile} />
-      <div className="thread-card-body">
+      <div className="thread-body">
         <div className="thread-header">
           <div className="thread-user-id" onClick={moveProfile}>{thread.user}</div>
           {thread.hashtag && <div className="thread-hashtag">&gt;&nbsp;{thread.hashtag}</div>}

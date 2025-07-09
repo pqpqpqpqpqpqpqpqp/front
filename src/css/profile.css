@@ -6,7 +6,6 @@
 .profile_container {
   text-align: left;
   background: white;
-  width: 600px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -29,7 +28,6 @@
 
 .profile_info {
   height: 96px;
-  flex-grow: 1;
 }
 
 .profile_name {

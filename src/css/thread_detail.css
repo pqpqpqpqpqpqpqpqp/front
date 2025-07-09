@@ -1,93 +1,107 @@
-.thread-detail-title h3 {
-  text-align: center;
+.thread-detail-container {
+  background-color: #ffffff;
+  width: 600px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
 }
 
-.thread-detail-container {
-  background: #fff;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  min-width: 600px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  overflow: hidden;
+.thread-detail-title h3 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  margin-bottom: 24px;
 }
 
 .thread-detail-card {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
-  border-bottom: 1px solid #eee;
-  padding: 20px 30px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  border-radius: 0;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
 }
 
 .thread-detail-header {
-  display: grid;
-  grid-template-columns: 80px 1fr 10px;
-  margin-bottom: 15px;
-}
-
-.thread-detail-user-info {
   display: flex;
+  width: 100%;
+  margin-bottom: 12px;
+  font-size: 14px;
 }
 
 .thread-detail-user-img {
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #e5e7eb;
   cursor: pointer;
-}
-
-.thread-detail-user-info {
-  display: flex;
-  font-weight: bold;
-  color: #222;
-  font-size: 18px;
-  gap: 10px;
+  flex-shrink: 0;
 }
 
 .thread-detail-user-id {
+  font-weight: 600;
+  color: #111827;
   cursor: pointer;
+  margin-right: 6px;
 }
 
 .thread-detail-hashtag {
-  color: #222;
+  font-weight: 500;
+  color: #6b7280;
+  margin-right: 6px;
 }
 
 .thread-detail-date {
-  color: #aaa;
+  color: #9ca3af;
+  margin-right: 6px;
+}
+
+.thread-detail-header svg {
+  margin-left: auto;
+  color: #9ca3af;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.thread-detail-header svg:hover {
+  color: #000;
 }
 
 .thread-detail-content {
-  font-size: 18px;
-  color: #222;
+  font-size: 15px;
+  color: #1f2937;
   line-height: 1.5;
-  margin-bottom: 15px;
+  white-space: pre-line;
+  margin-bottom: 16px;
 }
 
 .thread-detail-actions {
   display: flex;
-  gap: 30px;
-  color: #666;
-  font-size: 20px;
+  align-items: center;
+  gap: 16px;
+  color: #6b7280;
+  font-size: 14px;
 }
 
 .thread-detail-actions-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: inline-flex;
+  gap: 4px;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .thread-detail-actions-item:hover {
-  color: #007bff;
+  color: #2563eb;
+}
+
+.thread-detail-actions-item svg {
+  font-size: 16px;
 }
 
 .thread-reply-list {
   list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-.thread-reply-list li {
-  border-bottom: 1px solid #ddd;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }

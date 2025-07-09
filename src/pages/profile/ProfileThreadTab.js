@@ -57,7 +57,7 @@ function ProfileThreadTab() {
   ];
 
   return (
-    <ul className="thread-list">
+    <ul className="profile-thread-list">
       {threads.map((thread) => (
         <li key={thread.id}>
           <Thread thread={thread} />

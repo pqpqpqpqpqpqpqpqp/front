@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
-import {
-    HiHome, HiOutlineHeart, HiSearch, HiPlusCircle, HiUser, HiBell, HiMenu
-} from "react-icons/hi";
+import { HiHome, HiOutlineHeart, HiSearch, HiPlusCircle, HiUser, HiMenu } from "react-icons/hi";
 
 import Home from "../pages/Home";
 import Follow from "../pages/Follow";
-import Search from "../pages/Search";
+import Search from "../pages/search/Search";
 import Like from "../pages/Like";
-import Notification from "../pages/Notification";
 import Profile from "../pages/profile/Profile";
 import ThreadWrite from "components/ThreadWrite";
 import ThreadDetail from "components/ThreadDetail";
@@ -32,15 +29,12 @@ function AppRouter() {
                     <Link to="/">
                         <HiHome className={`nav_icon ${current === '/' ? 'active' : ''}`} title="홈" />
                     </Link>
-                    <Link to="/follow">
-                        <HiOutlineHeart className={`nav_icon ${current === '/follow' ? 'active' : ''}`} title="팔로우" />
-                    </Link>
                     <Link to="/search">
                         <HiSearch className={`nav_icon ${current === '/search' ? 'active' : ''}`} title="검색" />
                     </Link>
                     <HiPlusCircle className='nav_icon' title="작성" onClick={() => setWriteOpen(true)} />
-                    <Link to="/notification">
-                        <HiBell className={`nav_icon ${current === '/notification' ? 'active' : ''}`} title="알림" />
+                    <Link to="/follow">
+                        <HiOutlineHeart className={`nav_icon ${current === '/follow' ? 'active' : ''}`} title="팔로우" />
                     </Link>
                     <Link to="/profile">
                         <HiUser className={`nav_icon ${current === '/profile' ? 'active' : ''}`} title="프로필" />
@@ -70,11 +64,9 @@ function AppRouter() {
                     <Route path="/follow" element={<Follow />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/like" element={<Like />} />
-                    <Route path="/notification" element={<Notification />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/thread/:id" element={<ThreadDetail />} />
                 </Routes>
-
                 {writeOpen && (
                     <ThreadWrite onClose={() => setWriteOpen(false)} />
                 )}

@@ -1,5 +1,5 @@
 import Thread from "components/Thread";
-import 'css/profile_thread_tab.css'
+import 'css/profile_reply_tab.css';
 
 function ProfileReplyTab() {
   // 내 스레드중 답글 스레드(부모가 있는 스레드)를 보여주는 페이지
@@ -68,7 +68,7 @@ function ProfileReplyTab() {
   rootThreads.forEach(root => collectPairs(root));
 
   return (
-    <ul className="thread-list">
+    <ul className="profile-reply-list">
       {threadPairs.map(([parent, child]) => (
         <li key={`${parent.id}-${child.id}`} className="thread-pair">
           <Thread thread={parent} />

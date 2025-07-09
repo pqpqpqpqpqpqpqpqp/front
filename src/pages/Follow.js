@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Thread from "components/Thread";
-import 'css/follow.css';
 
 function Follow() {
   // 내가 팔로우한 유저의 스레드를 가져올 페이지

@@ -10,7 +10,7 @@ const ThreadDetail = () => {
 
     // id로 서버에서 데이터를 가져올것
     // 지금은 임의로 만든 데이터를 사용
-    // 응답 리스트 구조 미정
+    // 응답 리스트 구조 미정, 변수명 협의 필요
     const thread = {
         id: 1,
         user: 'requestfield',
@@ -53,17 +53,15 @@ const ThreadDetail = () => {
     };
 
     return (
-        <div className="thread-detail-title"> 
+        <div className="thread-detail-title">
             <h3>{id}번 스레드 상세 페이지</h3>
             <div className="thread-detail-container">
                 <div className="thread-detail-card">
                     <div className="thread-detail-header">
                         <div className="thread-detail-user-img" onClick={moveProfile} />
-                        <div className="thread-detail-user-info">
-                            <div className="thread-detail-user-id" onClick={moveProfile}>{thread.user}</div>
-                            {thread.hashtag && <div className="thread-detail-hashtag">&gt;&nbsp;{thread.hashtag}</div>}
-                            <div className="thread-detail-date">{thread.createdAt}</div>
-                        </div>
+                        <div className="thread-detail-user-id" onClick={moveProfile}>{thread.user}</div>
+                        {thread.hashtag && <div className="thread-detail-hashtag">&gt;&nbsp;{thread.hashtag}</div>}
+                        <div className="thread-detail-date">{thread.createdAt}</div>
                         <HiOutlineDotsHorizontal />
                     </div>
                     <div className="thread-detail-content">{thread.content}</div>
@@ -93,7 +91,6 @@ const ThreadDetail = () => {
                 </ul>
             </div >
         </div>
-
     );
 }
 

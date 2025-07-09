@@ -27,17 +27,12 @@
   font-weight: bold;
 }
 
-.profile_edit_section {
-  margin-bottom: 16px;
-}
-
-.profile_edit_between {
+.profile_edit_flex {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
 .profile_edit_label {
-  display: block;
   font-weight: 500;
   margin-bottom: 4px;
 }
@@ -47,7 +42,9 @@
   border: none;
   border-bottom: 1px solid #ddd;
   padding: 4px 0px;
+  margin-bottom: 12px;
   font-size: 14px;
+  outline: none;
 }
 
 .profile_edit_pic {
@@ -55,6 +52,14 @@
   height: 52px;
   background: #ccc;
   border-radius: 50%;
+  margin-left: auto;
+}
+
+.profile_edit_textarea {
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
 .profile_edit_switch {
@@ -62,6 +67,7 @@
   display: inline-block;
   width: 48px;
   height: 24px;
+  margin-left: auto;
 }
 
 .profile_edit_switch input {
@@ -103,7 +109,6 @@
 }
 
 .profile_edit_submit {
-  margin-top: 24px;
   width: 100%;
   padding: 12px;
   background-color: #000;
