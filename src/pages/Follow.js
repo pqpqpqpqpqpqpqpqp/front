@@ -60,11 +60,11 @@ function Follow() {
   }, [])
 
   return (
-    <div className="thread-container">
-      <div className="profile_title">
+    <div className="thread-fallow-container">
+      <div className="thread-fallow-title">
         <h3>팔로우</h3>
       </div>
-      <ul className="thread-list">
+      <ul className="thread-fallow-list">
         {threads.map((thread) => (
           <li key={thread.id}>
             <Thread thread={thread} />

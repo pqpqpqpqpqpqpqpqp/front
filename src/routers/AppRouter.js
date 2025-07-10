@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { HiHome, HiOutlineHeart, HiSearch, HiPlusCircle, HiUser, HiMenu } from "react-icons/hi";
 
@@ -7,6 +7,8 @@ import Follow from "../pages/Follow";
 import Search from "../pages/search/Search";
 import Like from "../pages/Like";
 import Profile from "../pages/profile/Profile";
+import Setting from "pages/Setting";
+import PrivateRoute from "./PrivateRouter";
 import ThreadWrite from "components/ThreadWrite";
 import ThreadDetail from "components/ThreadDetail";
 
@@ -17,10 +19,20 @@ function AppRouter() {
     const current = location.pathname;
     const [menuDropdown, setMenuDropdown] = useState(false);
     const [writeOpen, setWriteOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     const toggleDropdown = () => {
         setMenuDropdown(!menuDropdown);
     };
+
+    useEffect(() => {
+        console.log("🔁 라우터 렌더링됨, isLoggedIn =", isLoggedIn);
+    }, [isLoggedIn]);
+
+    const logout = () => {
+        // 대충 로그아웃 요청 로직
+        setIsLoggedIn(false);
+    }
 
     return (
         <div className="app_container">
@@ -32,7 +44,16 @@ function AppRouter() {
                     <Link to="/search">
                         <HiSearch className={`nav_icon ${current === '/search' ? 'active' : ''}`} title="검색" />
                     </Link>
-                    <HiPlusCircle className='nav_icon' title="작성" onClick={() => setWriteOpen(true)} />
+                    <HiPlusCircle
+                        className='nav_icon'
+                        title="작성"
+                        onClick={() => {
+                            if (!isLoggedIn) {
+                                alert('로그인이 필요합니다');
+                                return;
+                            }
+                            setWriteOpen(true);
+                        }} />
                     <Link to="/follow">
                         <HiOutlineHeart className={`nav_icon ${current === '/follow' ? 'active' : ''}`} title="팔로우" />
                     </Link>
@@ -50,8 +71,20 @@ function AppRouter() {
                         />
                         {menuDropdown && (
                             <div className="setting_content">
-                                <Link to="/sign/login">로그인</Link>
-                                <Link to="/sign/signup">회원가입</Link>
+                                {isLoggedIn ? (
+                                    <>
+                                        <Link to="/setting">설정</Link>
+                                        <Link to="/like">좋아요</Link>
+                                        <div className="div_link" onClick={() => {
+                                            logout();
+                                        }}>로그아웃</div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link to="/sign/login">로그인</Link>
+                                        <Link to="/sign/signup">회원가입</Link>
+                                    </>
+                                )}
                             </div>
                         )}
                     </div>
@@ -61,10 +94,20 @@ function AppRouter() {
             <div className="app_context">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/follow" element={<Follow />} />
                     <Route path="/search" element={<Search />} />
-                    <Route path="/like" element={<Like />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/follow" element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <Follow />
+                        </PrivateRoute>} />
+                    <Route path="/setting" element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <Setting />
+                        </PrivateRoute>} />
+                    <Route path="/like" element={
+                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                            <Like />
+                        </PrivateRoute>} />
                     <Route path="/thread/:id" element={<ThreadDetail />} />
                 </Routes>
                 {writeOpen && (

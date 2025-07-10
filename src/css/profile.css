@@ -44,6 +44,7 @@
   font-size: 16px;
   margin-top: 20px;
   color: #555;
+  cursor: pointer;
 }
 
 .profile_edit_btn {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ProfileEdit from './ProfileEdit';
+import ProfileFollow from './ProfileFollow';
 import ProfileThreadTab from './ProfileThreadTab';
 import ProfileReplyTab from './ProfileReplyTab';
 import ProfileMediaTab from './ProfileMediaTab';
@@ -7,11 +8,12 @@ import 'css/profile.css'
 
 function Profile() {
   const [currentTab, setCurrentTab] = useState('스레드');
-  const [editOpen, setEditOpen] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [followModal, setFollowModal] = useState(false);
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    setEditOpen(false);
+    setEditModal(false);
   };
 
   const renderTabContext = () => {
@@ -30,23 +32,27 @@ function Profile() {
   return (
     <div className="profile_title">
       <h3>프로필</h3>
+      {followModal && (
+        <ProfileFollow onClose={() => setFollowModal(false)} />
+      )}
+      {editModal && (
+        <ProfileEdit onClose={() => setEditModal(false)} onSubmit={handleEditSubmit} />
+      )}
       <div className="profile_container">
         <div className="profile_header">
           <div className="profile_pic" />
           <div className="profile_info">
             <div className="profile_name">name</div>
             <div className="profile_id">id</div>
-            <div className="profile_follow_cnt">팔로워 0명</div>
+            <div className="profile_follow_cnt" onClick={() => setFollowModal(true)}>팔로워 0명</div>
           </div>
         </div>
 
-        <button className="profile_edit_btn" onClick={() => setEditOpen(true)}>
+        <button className="profile_edit_btn" onClick={() => setEditModal(true)}>
           프로필 수정
         </button>
 
-        {editOpen && (
-          <ProfileEdit onClose={() => setEditOpen(false)} onSubmit={handleEditSubmit} />
-        )}
+
 
         <div className="profile_tab_menus">
           <div

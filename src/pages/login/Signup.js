@@ -18,9 +18,8 @@ function Signup() {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    // === 입력값 유효성 검사 ===
     if (!userName.trim() || userName.trim().length < 2 || !isValidName(userName)) {
-      alert('이름은 한글 또는 영문 2자 이상으로 입력해주세요.');
+      alert('이름은 한글 또는 영문에 2자 이상으로 입력해주세요.');
       return;
     }
 
