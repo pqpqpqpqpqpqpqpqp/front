@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { HiHome, HiOutlineHeart, HiSearch, HiPlusCircle, HiUser, HiMenu } from "react-icons/hi";
 
 import Home from "../pages/Home";
@@ -8,7 +9,7 @@ import Search from "../pages/search/Search";
 import Like from "../pages/Like";
 import Profile from "../pages/profile/Profile";
 import Setting from "pages/Setting";
-import PrivateRoute from "./PrivateRouter";
+import PrivateRouter from "./PrivateRouter";
 import ThreadWrite from "components/ThreadWrite";
 import ThreadDetail from "components/ThreadDetail";
 
@@ -19,11 +20,7 @@ function AppRouter() {
     const current = location.pathname;
     const [menuDropdown, setMenuDropdown] = useState(false);
     const [writeOpen, setWriteOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-    const toggleDropdown = () => {
-        setMenuDropdown(!menuDropdown);
-    };
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         console.log("🔁 라우터 렌더링됨, isLoggedIn =", isLoggedIn);
@@ -49,7 +46,7 @@ function AppRouter() {
                         title="작성"
                         onClick={() => {
                             if (!isLoggedIn) {
-                                alert('로그인이 필요합니다');
+                                toast('로그인이 필요합니다');
                                 return;
                             }
                             setWriteOpen(true);
@@ -67,10 +64,10 @@ function AppRouter() {
                         <HiMenu
                             className={`nav_icon ${current === '/setting' ? 'active' : ''}`}
                             title="설정"
-                            onClick={toggleDropdown}
+                            onMouseEnter={() => setMenuDropdown(true)}
                         />
                         {menuDropdown && (
-                            <div className="setting_content">
+                            <div className="setting_content" onMouseLeave={() => setMenuDropdown(false)}>
                                 {isLoggedIn ? (
                                     <>
                                         <Link to="/setting">설정</Link>
@@ -83,6 +80,7 @@ function AppRouter() {
                                     <>
                                         <Link to="/sign/login">로그인</Link>
                                         <Link to="/sign/signup">회원가입</Link>
+                                        <Link to="/sign/restore">계정 복구</Link>
                                     </>
                                 )}
                             </div>
@@ -97,17 +95,17 @@ function AppRouter() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/follow" element={
-                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                        <PrivateRouter isLoggedIn={isLoggedIn}>
                             <Follow />
-                        </PrivateRoute>} />
+                        </PrivateRouter>} />
                     <Route path="/setting" element={
-                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                        <PrivateRouter isLoggedIn={isLoggedIn}>
                             <Setting />
-                        </PrivateRoute>} />
+                        </PrivateRouter>} />
                     <Route path="/like" element={
-                        <PrivateRoute isLoggedIn={isLoggedIn}>
+                        <PrivateRouter isLoggedIn={isLoggedIn}>
                             <Like />
-                        </PrivateRoute>} />
+                        </PrivateRouter>} />
                     <Route path="/thread/:id" element={<ThreadDetail />} />
                 </Routes>
                 {writeOpen && (

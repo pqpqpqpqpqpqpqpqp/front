@@ -1,0 +1,54 @@
+.profile_follow_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  z-index: 999;
+}
+
+.profile_follow_card {
+  background: #fff;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Pretendard', sans-serif;
+}
+
+.profile_follow_tab_menu .active_follow_tab {
+  font-weight: bold;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.profile_follow_tab_menu {
+  display: flex;
+}
+
+.profile_follow_tab_menu div {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: #777;
+  padding: 8px 16px;
+}
+
+.profile_follow_body ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.profile_follow_body ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

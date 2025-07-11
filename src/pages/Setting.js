@@ -12,6 +12,7 @@ function Setting() {
                 <ul className="setting-detail">
                     <li>개인 정보 설정 <HiExternalLink /></li>
                     <li>기타 계정 설정 <HiExternalLink /></li>
+                    <li>계정 삭제 <HiExternalLink /></li>
                 </ul>
             </div>
         </div>

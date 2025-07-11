@@ -77,3 +77,13 @@
   font-size: 16px;
   color: #777;
 }
+
+.profile-thread-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-thread-list li {
+    border-bottom: 1px solid #ddd;
+}

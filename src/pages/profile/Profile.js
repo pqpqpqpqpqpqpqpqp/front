@@ -1,29 +1,116 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProfileEdit from './ProfileEdit';
 import ProfileFollow from './ProfileFollow';
-import ProfileThreadTab from './ProfileThreadTab';
-import ProfileReplyTab from './ProfileReplyTab';
-import ProfileMediaTab from './ProfileMediaTab';
+import Thread from 'components/Thread';
 import 'css/profile.css'
 
 function Profile() {
   const [currentTab, setCurrentTab] = useState('스레드');
   const [editModal, setEditModal] = useState(false);
   const [followModal, setFollowModal] = useState(false);
+  const [profileThreadList, setProfileThreadList] = useState([]);
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
     setEditModal(false);
   };
 
+  const fetchThreadData = async () => {
+    return [
+      {
+        id: 1,
+        user: "emily_james",
+        hashtag: "#travel",
+        createdAt: "2025-07-10",
+        content: "Thread content",
+        likes: 10,
+        replies: 2
+      }
+    ];
+  };
+
+  const fetchReplyData = async () => {
+    return [
+      {
+        id: 4,
+        user: "noah_chen",
+        hashtag: "#reply",
+        createdAt: "2025-07-11",
+        content: "Reply content",
+        likes: 5,
+        replies: 1
+      }
+    ];
+  };
+
+  const fetchMediaData = async () => {
+    return [
+      {
+        id: 7,
+        user: "sofia_ruz",
+        hashtag: "#photo",
+        createdAt: "2025-07-12",
+        content: "Media content with 📸",
+        likes: 15,
+        replies: 3
+      }
+    ];
+  };
+
+  useEffect(() => {
+    // 탭에 따라 다른 데이터를 불러오는 함수
+    const fetchTabData = async () => {
+      try {
+        if (currentTab === '스레드') {
+          const data = await fetchThreadData();
+          setProfileThreadList(data);
+        } else if (currentTab === '답글') {
+          const data = await fetchReplyData();
+          setProfileThreadList(data);
+        } else if (currentTab === '미디어') {
+          const data = await fetchMediaData();
+          setProfileThreadList(data);
+        }
+      } catch (error) {
+        console.error('데이터 요청 실패:', error);
+      }
+    };
+
+    fetchTabData();
+  }, [currentTab]);
+
   const renderTabContext = () => {
     switch (currentTab) {
       case '스레드':
-        return <ProfileThreadTab />;
+        return (
+          <ul className="profile-thread-list">
+            {profileThreadList.map((thread) => (
+              <li key={thread.id}>
+                <Thread thread={thread} />
+              </li>
+            ))}
+          </ul>
+        );
       case '답글':
-        return <ProfileReplyTab />;
+        return (
+          <ul className="profile-thread-list">
+            {profileThreadList.map((thread) => (
+              <li key={thread.id}>
+                <Thread thread={thread} />
+              </li>
+            ))}
+          </ul>
+        );
       case '미디어':
-        return <ProfileMediaTab />;
+        return (
+          <ul className="profile-thread-list">
+            {profileThreadList.map((thread) => (
+              <li key={thread.id}>
+                <Thread thread={thread} />
+              </li>
+            ))}
+          </ul>
+        );
       default:
         return null;
     }
@@ -51,8 +138,6 @@ function Profile() {
         <button className="profile_edit_btn" onClick={() => setEditModal(true)}>
           프로필 수정
         </button>
-
-
 
         <div className="profile_tab_menus">
           <div

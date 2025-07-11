@@ -47,3 +47,9 @@
 .thread-search-context {
     margin-top: 20px;
 }
+
+.thread-search-body ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
