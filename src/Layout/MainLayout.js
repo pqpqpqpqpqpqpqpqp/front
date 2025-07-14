@@ -1,17 +1,17 @@
-import { useState } from "react";
 import NaviBar from "./NaviBar";
 import AppRouter from "../routers/AppRouter";
 import ThreadWrite from "../components/ThreadWrite";
+import { useWrite } from "context/WriteContext";
 
 function MainLayout() {
-    const [writeOpen, setWriteOpen] = useState(false);
+    const { writeOpen, closeWrite } = useWrite();
 
     return (
         <div className="app_container">
-            <NaviBar onWriteOpen={() => setWriteOpen(true)} />
+            <NaviBar />
             <div className="app_context">
                 <AppRouter />
-                {writeOpen && (<ThreadWrite onClose={() => setWriteOpen(false)} />)}
+                {writeOpen && <ThreadWrite onClose={closeWrite} />}
             </div>
         </div>
     );

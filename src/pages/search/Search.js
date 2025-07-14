@@ -90,7 +90,7 @@ function Search() {
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedQuery(searchQuery);
-    }, 1000);
+    }, 700);
     return () => {
       clearTimeout(handler);
     };
@@ -130,7 +130,7 @@ function Search() {
         return (
           <ul>
             {searchThreadList.map((thread) => (
-              <li key={thread.id}>
+              <li key={thread.threadIdx}>
                 <Thread thread={thread} />
               </li>
             ))}
@@ -139,7 +139,7 @@ function Search() {
         return (
           <ul>
             {searchUserList.map((user) => (
-              <li key={user.id}>
+              <li key={user.userIdx}>
                 <ThreadUser user={user} />
               </li>
             ))}

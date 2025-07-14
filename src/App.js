@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import MainLayout from "Layout/MainLayout";
 import SignRouter from "./routers/SignRouter";
 import { AuthProvider } from "context/AuthContext";
+import { WriteProvider } from "context/WriteContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,19 +15,23 @@ function App() {
         <SignRouter />
         <ToastContainer
           autoClose={2000}
-          hideProgressBar={true} />
+          hideProgressBar={true}
+        />
       </AuthProvider>
-    )
+    );
   }
 
   return (
     <AuthProvider>
-      <MainLayout />
+      <WriteProvider>
+        <MainLayout />
+      </WriteProvider>
       <ToastContainer
         autoClose={2000}
-        hideProgressBar={true} />
+        hideProgressBar={true}
+      />
     </AuthProvider>
-  )
+  );
 }
 
 export default App;

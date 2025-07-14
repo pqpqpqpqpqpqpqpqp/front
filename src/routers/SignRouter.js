@@ -1,10 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from 'context/AuthContext';
 import Login from '../pages/login/Login';
 import Signup from '../pages/login/Signup';
 import SignRestore from 'pages/login/SignRestore';
 import LoginRequired from 'pages/login/LoginRequired';
 
 function SignRouter() {
+    const { isLoggedIn } = useAuth();
+
+    if (isLoggedIn) {
+        return <Navigate to="/" replace />;
+    }
 
     return (
         <div className="sign_context">

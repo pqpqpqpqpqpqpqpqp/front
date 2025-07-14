@@ -7,12 +7,13 @@ const Thread = ({ thread }) => {
   const navigate = useNavigate();
 
   const moveDetail = () => {
-    navigate(`/thread/${thread.idx}`);
+    navigate(`/thread/${thread.threadIdx}`);
   }
 
   const moveProfile = (e) => {
     e.preventDefault();
-    navigate(navigate(`/profile/${thread.useridx}`));
+    e.stopPropagation()
+    navigate(`/profile/${thread.useridx}`);
   };
 
   return (

@@ -42,13 +42,13 @@ function Signup() {
     // 회원가입 처리 (향후 fetch 요청 예정)
     toast.success('회원가입 성공!');
 
-    navigate('/sign/login');
+    navigate('/');
   };
 
   return (
     <div className="sign_container">
       <h2>회원가입</h2>
-      <form onSubmit={handleSignup} className="sign_form">
+      <form onSubmit={(e) => { handleSignup(e) }} className="sign_form">
         <input
           type="text"
           value={userName}

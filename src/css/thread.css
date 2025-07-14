@@ -3,7 +3,7 @@
     display: flex;
     width: 600px;
     gap: 10px;
-    padding: 12px 24px;
+    padding: 12px;
     cursor: default;
     border-bottom: 1px solid #ddd;
 }

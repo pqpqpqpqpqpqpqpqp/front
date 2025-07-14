@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { HiHome, HiOutlineHeart, HiSearch, HiPlusCircle, HiUser, HiMenu } from "react-icons/hi";
 import { useAuth } from "context/AuthContext";
+import { useWrite } from "context/WriteContext";
 import 'css/app.css';
 
-function NaviBar({onWriteOpen }) {
+function NaviBar() {
     const { isLoggedIn, logout } = useAuth();
+    const { openWrite } = useWrite();
+    const [menuDropdown, setMenuDropdown] = useState(false);
     const location = useLocation();
     const current = location.pathname;
-    const [menuDropdown, setMenuDropdown] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <nav className="app_navi">
@@ -28,12 +31,12 @@ function NaviBar({onWriteOpen }) {
                             toast.warn('로그인이 필요합니다');
                             return;
                         }
-                        onWriteOpen();
+                        openWrite();
                     }} />
                 <Link to="/follow">
                     <HiOutlineHeart className={`nav_icon ${current === '/follow' ? 'active' : ''}`} title="팔로우" />
                 </Link>
-                <Link to="/profile">
+                <Link to="/profile" >
                     <HiUser className={`nav_icon ${current === '/profile' ? 'active' : ''}`} title="프로필" />
                 </Link>
             </div>
@@ -51,7 +54,10 @@ function NaviBar({onWriteOpen }) {
                                 <>
                                     <Link to="/setting">설정</Link>
                                     <Link to="/like">좋아요</Link>
-                                    <div className="div_link" onClick={logout}>로그아웃</div>
+                                    <div className="div_link" onClick={() => {
+                                        navigate('/');
+                                        setTimeout(() => logout(), 10);
+                                    }} >로그아웃</div>
                                 </>
                             ) : (
                                 <>

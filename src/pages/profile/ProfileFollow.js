@@ -6,20 +6,20 @@ function ProfileFollow({ onClose }) {
     const [followTab, setFollowTab] = useState('팔로워');
 
     const followerList = [
-    { idx: 1, id: 'jake123', name: 'Jake Thompson' },
-    { idx: 2, id: 'mia_dev', name: 'Mia Andersen' },
-    { idx: 3, id: 'liam2025', name: 'Liam Rodriguez' },
-    { idx: 4, id: 'zoe.d', name: 'Zoe Dupont' },
-    { idx: 5, id: 'niko_w', name: 'Nikolai Wexler' }
-];
+        { userIdx: 1, userId: 'jake123', userName: 'Jake Thompson' },
+        { userIdx: 2, userId: 'mia_dev', userName: 'Mia Andersen' },
+        { userIdx: 3, userId: 'liam2025', userName: 'Liam Rodriguez' },
+        { userIdx: 4, userId: 'zoe.d', userName: 'Zoe Dupont' },
+        { userIdx: 5, userId: 'niko_w', userName: 'Nikolai Wexler' }
+    ];
 
-const followingList = [
-    { idx: 6, id: 'ava_c', name: 'Ava Chung' },
-    { idx: 7, id: 'noahK', name: 'Noah Klein' },
-    { idx: 8, id: 'emily.smith', name: 'Emily Smithson' },
-    { idx: 9, id: 'raj.patel', name: 'Raj Patel' },
-    { idx: 10, id: 'lucas_v', name: 'Lucas Van Dijk' }
-];
+    const followingList = [
+        { userIdx: 1, userId: 'jake123', userName: 'Jake Thompson' },
+        { userIdx: 2, userId: 'mia_dev', userName: 'Mia Andersen' },
+        { userIdx: 3, userId: 'liam2025', userName: 'Liam Rodriguez' },
+        { userIdx: 4, userId: 'zoe.d', userName: 'Zoe Dupont' },
+        { userIdx: 5, userId: 'niko_w', userName: 'Nikolai Wexler' }
+    ];
 
     const handleFollowClose = (e) => {
         if (e.target.classList.contains("profile_follow_container")) {

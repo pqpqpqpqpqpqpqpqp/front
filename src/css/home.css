@@ -1,8 +1,8 @@
-.thread-container {
+.home_thread_container {
   font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-.profile_title h3 {
+.home_title h3 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -10,10 +10,39 @@
   text-align: center;
 }
 
-.thread-container .thread-list {
+.home_quick_post {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.home_quick_post input {
+  font-size: 18px;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.home_quick_post_btn {
+  margin-left: auto;
+  padding: 6px 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.home_thread_list {
   list-style: none;
   margin: 0px;
-  padding: 0px;
+  padding: 16px;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 10px;

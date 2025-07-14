@@ -3,7 +3,8 @@ import Home from "../pages/Home";
 import Follow from "../pages/Follow";
 import Search from "../pages/search/Search";
 import Like from "../pages/Like";
-import Profile from "../pages/profile/Profile";
+import MyProfile from "../pages/profile/MyProfile";
+import OtherProfile from "pages/profile/OtherProfile";
 import Setting from "../pages/Setting";
 import PrivateRouter from "./PrivateRouter";
 import ThreadDetail from "components/ThreadDetail";
@@ -13,7 +14,14 @@ function AppRouter() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/profile/:idx" element={<Profile />} />
+            <Route path="/profile" element={
+                <PrivateRouter>
+                    <MyProfile />
+                </PrivateRouter>
+            } />
+            <Route path="/profile/:idx" element={
+                    <OtherProfile />
+            } />
             <Route path="/follow" element={
                 <PrivateRouter>
                     <Follow />

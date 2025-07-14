@@ -4,14 +4,13 @@ import ProfileFollow from './ProfileFollow';
 import Thread from 'components/Thread';
 import 'css/profile.css'
 
-function Profile() {
+function MyProfile() {
   const [currentTab, setCurrentTab] = useState('스레드');
   const [editModal, setEditModal] = useState(false);
   const [followModal, setFollowModal] = useState(false);
   const [profileThreadList, setProfileThreadList] = useState([]);
 
-  const handleEditSubmit = (e) => {
-    e.preventDefault();
+  const handleEditSubmit = () => {
     setEditModal(false);
   };
 
@@ -127,7 +126,7 @@ function Profile() {
         <ProfileFollow onClose={() => setFollowModal(false)} />
       )}
       {editModal && (
-        <ProfileEdit onClose={() => setEditModal(false)} onSubmit={(e) => { handleEditSubmit(e) }} />
+        <ProfileEdit onClose={() => setEditModal(false)} onSubmit={handleEditSubmit} />
       )}
       <div className="profile_container">
         <div className="profile_header">
@@ -173,4 +172,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default MyProfile;

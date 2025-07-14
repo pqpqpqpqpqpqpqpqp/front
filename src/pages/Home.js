@@ -1,13 +1,13 @@
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 import Thread from "components/Thread";
+import { useAuth } from "context/AuthContext";
+import { useWrite } from "context/WriteContext";
 import 'css/home.css';
 
 function Home() {
-  // 전체 스레드를 가져올 페이지
-  // 가져올때 사용자 선호도 가중치 테이블로 적절히 추천 스레드를 가져올것
-  // 그리고 전체 스레드를 다 가져오는건 너무 무거우므로 적절한 양을 잘라 가져오고
-  // 스크롤하여 더 보여줄 필요가 생기면 추가로 가져와서 보여줄것 
-  // 현재 데이터는 임시로, 추후 변경 필요
+  const { isLoggedIn } = useAuth();
+  const { openWrite } = useWrite();
 
   const threads = [
     {
@@ -66,15 +66,33 @@ function Home() {
   ];
 
   useEffect(() => {
-    console.log("페이지 로딩")
   }, [])
 
   return (
-    <div className="thread-container">
-      <div className="profile_title">
+    <div className="home_thread_container">
+      <div className="home_title">
         <h3>홈</h3>
       </div>
-      <ul className="thread-list">
+
+      <ul className="home_thread_list">
+        <div className="home_quick_post">
+          <input
+            type="text"
+            placeholder="무슨 생각을 하고 있나요?"
+            readOnly
+          />
+          <div
+            className="home_quick_post_btn"
+            title="작성"
+            onClick={() => {
+              if (!isLoggedIn) {
+                toast.warn('로그인이 필요합니다');
+                return;
+              }
+              openWrite();
+            }} >작성</div>
+        </div>
+
         {threads.map((thread) => (
           <li key={thread.threadIdx}>
             <Thread thread={thread} />
