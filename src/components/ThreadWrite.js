@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { HiPhotograph, HiEmojiHappy } from "react-icons/hi";
 import Picker from '@emoji-mart/react';
 import data from '@emoji-mart/data';
+import { toast } from "react-toastify";
 import 'css/thread_write.css';
 
 const ThreadWrite = ({ onClose }) => {
@@ -39,10 +40,10 @@ const ThreadWrite = ({ onClose }) => {
         if (!file) {
             return;
         } else if (!file.type.startsWith("image/")) {
-            alert("이미지 파일만 업로드할 수 있습니다.");
+            toast.error("이미지 파일만 업로드할 수 있습니다.");
             return;
         } else if (file.size > 2 * 1024 * 1024) {
-            alert("2MB 이하의 이미지만 업로드할 수 있습니다.");
+            toast.warn("2MB 이하의 이미지만 업로드할 수 있습니다.");
             return;
         } else {
             setImg(file);

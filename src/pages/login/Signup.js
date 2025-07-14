@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import 'css/sign.css';
 
 function Signup() {
@@ -19,28 +20,29 @@ function Signup() {
     e.preventDefault();
 
     if (!userName.trim() || userName.trim().length < 2 || !isValidName(userName)) {
-      alert('이름은 한글 또는 영문에 2자 이상으로 입력해주세요.');
+      toast.warn('이름은 한글 또는 영문에 2자 이상으로 입력해주세요.');
       return;
     }
 
     if (!emailPhone.trim() || (!isValidEmail(emailPhone) && !isValidPhone(emailPhone))) {
-      alert('유효한 이메일 또는 전화번호를 입력해주세요.');
+      toast.warn('유효한 이메일 또는 전화번호를 입력해주세요.');
       return;
     }
 
     if (!userId.trim() || userId.length < 4 || !isValidId(userId)) {
-      alert('아이디는 영문, 숫자, 밑줄, 하이픈, 마침표를 포함한 4~20자여야 합니다.');
+      toast.warn('아이디는 영문, 숫자, 밑줄, 하이픈, 마침표를 포함한 4~20자여야 합니다.');
       return;
     }
 
     if (!isValidPw(userPw)) {
-      alert('비밀번호는 영문자와 숫자를 포함한 4~20자의 문자열이어야 하며, 특수문자는 사용할 수 없습니다.');
+      toast.warn('비밀번호는 영문자와 숫자를 포함한 4~20자의 문자열이어야 하며, 특수문자는 사용할 수 없습니다.');
       return;
     }
 
     // 회원가입 처리 (향후 fetch 요청 예정)
-    alert('회원가입 성공');
-    navigate('/login');
+    toast.success('회원가입 성공!');
+
+    navigate('/sign/login');
   };
 
   return (

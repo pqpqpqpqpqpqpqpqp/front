@@ -1,8 +1,8 @@
 .thread_user_card {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 12px;
-  border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 

@@ -18,13 +18,14 @@ function Profile() {
   const fetchThreadData = async () => {
     return [
       {
-        id: 1,
-        user: "emily_james",
+        threadIdx: 1,
+        userId: "emily_james",
+        userIdx: 11,
         hashtag: "#travel",
         createdAt: "2025-07-10",
-        content: "Thread content",
-        likes: 10,
-        replies: 2
+        content: "Just came back from Iceland 🇮🇸 The landscapes are unreal!",
+        likes: 124,
+        replies: 8
       }
     ];
   };
@@ -32,8 +33,9 @@ function Profile() {
   const fetchReplyData = async () => {
     return [
       {
-        id: 4,
-        user: "noah_chen",
+        threadIdx: 4,
+        userId: "noah_chen",
+        userIdx: 12,
         hashtag: "#reply",
         createdAt: "2025-07-11",
         content: "Reply content",
@@ -46,8 +48,9 @@ function Profile() {
   const fetchMediaData = async () => {
     return [
       {
-        id: 7,
-        user: "sofia_ruz",
+        threadIdx: 7,
+        userId: "sofia_ruz",
+        userIdx: 13,
         hashtag: "#photo",
         createdAt: "2025-07-12",
         content: "Media content with 📸",
@@ -56,6 +59,7 @@ function Profile() {
       }
     ];
   };
+
 
   useEffect(() => {
     // 탭에 따라 다른 데이터를 불러오는 함수
@@ -135,9 +139,12 @@ function Profile() {
           </div>
         </div>
 
-        <button className="profile_edit_btn" onClick={() => setEditModal(true)}>
-          프로필 수정
-        </button>
+        <div className='profile_edit_btn_box'>
+          <button className="profile_edit_btn" onClick={() => setEditModal(true)}>
+            프로필 수정
+          </button>
+        </div>
+
 
         <div className="profile_tab_menus">
           <div

@@ -1,16 +1,14 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from 'context/AuthContext';
-import 'css/sign.css';
-import { toast } from 'react-toastify';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'css/sign.css'
 
-function Login() {
+function SignRestore() {
     const [userId, setUserId] = useState('');
     const [userPw, setuserPw] = useState('');
-    const { login } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleRestore = (e) => {
         e.preventDefault();
 
         if (!userId.trim()) {
@@ -26,27 +24,26 @@ function Login() {
         const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(userId);
         const isPhone = /^\d{10,11}$/.test(userId);
         
-        let loginType = 'id';
-        if (isEmail) loginType = 'email';
-        else if (isPhone) loginType = 'phone';
+        let idType = 'id';
+        if (isEmail) idType = 'email';
+        else if (isPhone) idType = 'phone';
         
-        const loginPayload = {
-            type: loginType,
+        const restorePayload = {
+            type: idType,
             value: userId,
             password: userPw,
         };
         */
         // 추후 fetch로 바꿔서 요청을 넣을것
-        
-        toast.success('로그인 성공');
-        login();
+
+        toast.success('계정 복구 성공');
         navigate('/');
     };
 
     return (
         <div className="sign_container">
-            <h2>로그인</h2>
-            <form onSubmit={handleLogin} className="sign_form">
+            <h2>계정 복구</h2>
+            <form onSubmit={handleRestore} className="sign_form">
                 <input
                     type="text"
                     value={userId}
@@ -61,13 +58,12 @@ function Login() {
                     placeholder='비밀번호'
                     required
                 />
-                <button type="submit">로그인</button>
+                <button type="submit">계정 복구</button>
             </form>
-            <p>
-                아직 회원이 아니신가요? <Link to="/sign/signup">회원가입</Link>
-            </p>
+            <p>이미 회원이신가요? <Link to="/sign/login">로그인</Link> </p>
+            <p>아직 회원이 아니신가요? <Link to="/sign/signup">회원가입</Link></p>
         </div>
     );
 }
 
-export default Login;
+export default SignRestore;

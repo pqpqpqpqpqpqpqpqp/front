@@ -12,8 +12,9 @@ const ThreadDetail = () => {
     // 지금은 임의로 만든 데이터를 사용
     // 응답 리스트 구조 미정, 변수명 협의 필요
     const thread = {
-        id: 1,
-        user: 'requestfield',
+        threadIdx: 1,
+        userId: 'requestfield',
+        userIdx: 1,
         content: '4단 쓰레드',
         createdAt: '2025-07-01',
         likes: 6,
@@ -22,24 +23,27 @@ const ThreadDetail = () => {
     };
 
     const threadReplyList = [{
-        id: 2,
-        user: 'requestfield',
+        threadIdx: 2,
+        userId: 'requestfield',
+        userIdx: 1,
         content: '5단 쓰레드',
         createdAt: '2025-07-02',
         likes: 3,
         replies: 1,
         parentId: 1
     }, {
-        id: 3,
-        user: 'requestfield',
+        threadIdx: 3,
+        userId: 'requestfield',
+        userIdx: 1,
         content: '6단 쓰레드',
         createdAt: '2025-07-03',
         likes: 1,
         replies: 0,
         parentId: 2,
     }, {
-        id: 4,
-        user: 'requestfield',
+        threadIdx: 4,
+        userId: 'requestfield',
+        userIdx: 1,
         content: '4.1단 쓰레드',
         createdAt: '2025-07-03',
         likes: 1,
@@ -49,7 +53,7 @@ const ThreadDetail = () => {
 
     const moveProfile = (e) => {
         e.preventDefault();
-        navigate('/profile');
+        navigate(`/profile/${thread.userIdx}`);
     };
 
     return (
@@ -59,7 +63,7 @@ const ThreadDetail = () => {
                 <div className="thread-detail-card">
                     <div className="thread-detail-header">
                         <div className="thread-detail-user-img" onClick={moveProfile} />
-                        <div className="thread-detail-user-id" onClick={moveProfile}>{thread.user}</div>
+                        <div className="thread-detail-user-id" onClick={moveProfile}>{thread.userId}</div>
                         {thread.hashtag && <div className="thread-detail-hashtag">&gt;&nbsp;{thread.hashtag}</div>}
                         <div className="thread-detail-date">{thread.createdAt}</div>
                         <HiOutlineDotsHorizontal />
@@ -84,7 +88,7 @@ const ThreadDetail = () => {
                 </div>
                 <ul className="thread-reply-list">
                     {threadReplyList.map((thread) => (
-                        <li key={thread.id}>
+                        <li key={thread.threadIdx}>
                             <ThreadReply thread={thread} />
                         </li>
                     ))}

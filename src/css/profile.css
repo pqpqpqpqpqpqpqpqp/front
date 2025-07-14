@@ -47,9 +47,14 @@
   cursor: pointer;
 }
 
+.profile_edit_btn_box {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .profile_edit_btn {
-  width: calc(100% - 40px);
-  margin: 20px;
+  width: 100%;
   background: #efefef;
   border: none;
   border-radius: 6px;

@@ -10,44 +10,45 @@ function Search() {
 
   const searchThreadList = [
     {
-      id: 1,
-      user: "emily_james",
+      threadIdx: 1,
+      userId: "emily_james",
+      userIdx: 11,
       hashtag: "#travel",
       createdAt: "2025-07-10",
       content: "Just came back from Iceland 🇮🇸 The landscapes are unreal!",
       likes: 124,
       replies: 8
-    },
-    {
-      id: 2,
-      user: "noah_chen",
+    },{
+      threadIdx: 2,
+      userId: "noah_chen",
+      userIdx: 12,
       hashtag: "#coding",
       createdAt: "2025-07-08",
       content: "Finally cracked the algorithm challenge I've been stuck on for days!",
       likes: 89,
       replies: 12
-    },
-    {
-      id: 3,
-      user: "sofia_ruz",
+    },{
+      threadIdx: 3,
+      userId: "sofia_ruz",
+      userIdx: 13,
       hashtag: "#art",
       createdAt: "2025-07-09",
       content: "New sketchbook drop 🎨✨ Would love some feedback!",
       likes: 203,
       replies: 34
-    },
-    {
-      id: 4,
-      user: "liam_dev",
+    },{
+      threadIdx: 4,
+      userId: "liam_dev",
+      userIdx: 14,
       hashtag: "#startup",
       createdAt: "2025-07-11",
       content: "We just hit 10k users on our app 🎉 Thanks for the support!",
       likes: 310,
       replies: 47
-    },
-    {
-      id: 5,
-      user: "amelia.grace",
+    },{
+      threadIdx: 5,
+      userId: "amelia_grace",
+      userIdx: 15,
       hashtag: "#fitness",
       createdAt: "2025-07-07",
       content: "Early morning runs are my favorite 🏃‍♀️ #discipline",
@@ -55,28 +56,31 @@ function Search() {
       replies: 5
     }
   ];
+
   const searchUserList = [
     {
-      id: "emily_james",
-      name: "Emily James"
-    },
-    {
-      id: "noah_chen",
-      name: "Noah Chen"
-    },
-    {
-      id: "sofia_ruz",
-      name: "Sofia Ruz"
-    },
-    {
-      id: "liam_dev",
-      name: "Liam Davenport"
-    },
-    {
-      id: "amelia.grace",
-      name: "Amelia Grace"
+      userId: "emily_james",
+      userIdx: 11,
+      userName: "Emily James"
+    },{
+      userId: "noah_chen",
+      userIdx: 12,
+      userName: "Noah Chen"
+    },{
+      userId: "sofia_ruz",
+      userIdx: 13,
+      userName: "Sofia Ruz"
+    },{
+      userId: "liam_dev",
+      userIdx: 14,
+      userName: "Liam Davenport"
+    },{
+      userId: "amelia_grace",
+      userIdx: 15,
+      userName: "Amelia Grace"
     }
   ];
+
 
   useEffect(() => {
     setSearchQuery("");

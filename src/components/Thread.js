@@ -7,12 +7,12 @@ const Thread = ({ thread }) => {
   const navigate = useNavigate();
 
   const moveDetail = () => {
-    navigate(`/thread/${thread.id}`);
+    navigate(`/thread/${thread.idx}`);
   }
 
   const moveProfile = (e) => {
     e.preventDefault();
-    navigate('/profile');
+    navigate(navigate(`/profile/${thread.useridx}`));
   };
 
   return (
@@ -20,7 +20,7 @@ const Thread = ({ thread }) => {
       <div className="thread-user-img" onClick={moveProfile} />
       <div className="thread-body">
         <div className="thread-header">
-          <div className="thread-user-id" onClick={moveProfile}>{thread.user}</div>
+          <div className="thread-user-id" onClick={moveProfile}>{thread.userId}</div>
           {thread.hashtag && <div className="thread-hashtag">&gt;&nbsp;{thread.hashtag}</div>}
           <div className="thread-date">{thread.createdAt}</div>
         </div>
