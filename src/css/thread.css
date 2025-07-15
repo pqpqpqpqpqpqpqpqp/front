@@ -9,11 +9,12 @@
 }
 
 .thread-user-img {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #e5e7eb;
     cursor: pointer;
+    overflow: hidden;
     flex-shrink: 0;
 }
 

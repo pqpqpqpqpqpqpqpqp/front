@@ -1,6 +1,7 @@
 .thread-detail-container {
   background-color: #ffffff;
   min-width: 600px;
+  padding: 16px;
   border-radius: 16px;
   border: 1px solid #e5e7eb;
 }
@@ -18,7 +19,6 @@
   font-family: 'Inter', 'Segoe UI', sans-serif;
   border-radius: 0;
   padding: 16px;
-  border-bottom: 1px solid #ddd;
 }
 
 .thread-detail-header {
@@ -96,6 +96,31 @@
 
 .thread-detail-actions-item svg {
   font-size: 16px;
+}
+
+.thread-detail-reply-post {
+  display: flex;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.thread-detail-reply-post input {
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+.thread-detail-reply-post-btn {
+  margin-left: auto;
+  padding: 6px 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .thread-reply-list {

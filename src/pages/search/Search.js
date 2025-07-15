@@ -4,6 +4,7 @@ import ThreadUser from 'components/ThreadUser';
 import 'css/search.css';
 
 function Search() {
+  const [sortOption, setSortOption] = useState('최신순');
   const [currentTab, setCurrentTab] = useState('스레드');
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
@@ -18,7 +19,7 @@ function Search() {
       content: "Just came back from Iceland 🇮🇸 The landscapes are unreal!",
       likes: 124,
       replies: 8
-    },{
+    }, {
       threadIdx: 2,
       userId: "noah_chen",
       userIdx: 12,
@@ -27,7 +28,7 @@ function Search() {
       content: "Finally cracked the algorithm challenge I've been stuck on for days!",
       likes: 89,
       replies: 12
-    },{
+    }, {
       threadIdx: 3,
       userId: "sofia_ruz",
       userIdx: 13,
@@ -36,7 +37,7 @@ function Search() {
       content: "New sketchbook drop 🎨✨ Would love some feedback!",
       likes: 203,
       replies: 34
-    },{
+    }, {
       threadIdx: 4,
       userId: "liam_dev",
       userIdx: 14,
@@ -45,7 +46,7 @@ function Search() {
       content: "We just hit 10k users on our app 🎉 Thanks for the support!",
       likes: 310,
       replies: 47
-    },{
+    }, {
       threadIdx: 5,
       userId: "amelia_grace",
       userIdx: 15,
@@ -62,25 +63,24 @@ function Search() {
       userId: "emily_james",
       userIdx: 11,
       userName: "Emily James"
-    },{
+    }, {
       userId: "noah_chen",
       userIdx: 12,
       userName: "Noah Chen"
-    },{
+    }, {
       userId: "sofia_ruz",
       userIdx: 13,
       userName: "Sofia Ruz"
-    },{
+    }, {
       userId: "liam_dev",
       userIdx: 14,
       userName: "Liam Davenport"
-    },{
+    }, {
       userId: "amelia_grace",
       userIdx: 15,
       userName: "Amelia Grace"
     }
   ];
-
 
   useEffect(() => {
     setSearchQuery("");
@@ -120,6 +120,17 @@ function Search() {
     }
   }; */
 
+  const sortThreads = (threads) => {
+    switch (sortOption) {
+      case '최신순':
+        return [...threads].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      case '인기순':
+        return [...threads].sort((a, b) => b.likes - a.likes);
+      default:
+        return threads;
+    }
+  };
+
   const fetchResults = (query) => {
     console.log("🔍 검색 실행:", query);
   };
@@ -129,7 +140,7 @@ function Search() {
       case '스레드':
         return (
           <ul>
-            {searchThreadList.map((thread) => (
+            {sortThreads(searchThreadList).map((thread) => (
               <li key={thread.threadIdx}>
                 <Thread thread={thread} />
               </li>
@@ -167,12 +178,21 @@ function Search() {
             유저 검색
           </div>
         </div>
-        <input
-          className="thread-search-bar"
-          placeholder="검색어를 입력하세요"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <div className="thread-search-bar-with-sort" >
+          <input
+            className="thread-search-bar"
+            placeholder="검색어를 입력하세요"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+          >
+            <option value="최신순">최신순</option>
+            <option value="인기순">인기순</option>
+          </select>
+        </div>
         <div className="thread-search-body">{renderSearchBody()}</div>
       </div>
     </div>

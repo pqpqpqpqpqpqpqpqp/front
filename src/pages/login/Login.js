@@ -10,37 +10,45 @@ function Login() {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         if (!userId.trim()) {
-            toast.warn('아이디 또는 이메일/전화번호를 입력해주세요.');
+            toast.warn('이메일/전화번호를 입력해주세요.');
             return;
         }
 
-        if (userPw.trim().length < 4) {
-            toast.warn('비밀번호는 최소 4자 이상이어야 합니다.');
+        if (userPw.trim().length < 8) {
+            toast.warn('비밀번호는 최소 8자 이상이어야 합니다.');
             return;
         }
-        /*
-        const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(userId);
-        const isPhone = /^\d{10,11}$/.test(userId);
-        
-        let loginType = 'id';
-        if (isEmail) loginType = 'email';
-        else if (isPhone) loginType = 'phone';
-        
-        const loginPayload = {
-            type: loginType,
-            value: userId,
-            password: userPw,
-        };
-        */
-        // 추후 fetch로 바꿔서 요청을 넣을것
-        
-        toast.success('로그인 성공');
-        login();
-        navigate('/');
+
+        try {
+            const response = await fetch('http://localhost:8080/api/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    inputId: userId,
+                    inputPw: userPw,
+                }),
+                credentials: 'include',
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.code === 200) {
+                const idx = data.data;
+                toast.success('로그인 성공');
+                login(idx);
+                navigate('/');
+            } else {
+                toast.error(`로그인 실패: ${data.message || '서버 오류'}`);
+            }
+        } catch (err) {
+            toast.error(`로그인 중 오류가 발생했습니다: ${err.message}`);
+        }
     };
 
     return (
@@ -51,7 +59,7 @@ function Login() {
                     type="text"
                     value={userId}
                     onChange={(e) => setUserId(e.target.value)}
-                    placeholder='아이디 또는 이메일, 전화번호'
+                    placeholder='이메일 또는 전화번호'
                     required
                 />
                 <input
@@ -61,7 +69,7 @@ function Login() {
                     placeholder='비밀번호'
                     required
                 />
-                <button type="submit">로그인</button>
+                <button className='sign_form_submit_btn' type="submit">로그인</button>
             </form>
             <p>
                 아직 회원이 아니신가요? <Link to="/sign/signup">회원가입</Link>
@@ -69,5 +77,5 @@ function Login() {
         </div>
     );
 }
-
+// 작업 완
 export default Login;

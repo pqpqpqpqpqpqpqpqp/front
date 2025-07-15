@@ -4,8 +4,11 @@ import Picker from '@emoji-mart/react';
 import data from '@emoji-mart/data';
 import { toast } from "react-toastify";
 import 'css/thread_write.css';
+import { useAuth } from "context/AuthContext";
 
 const ThreadWrite = ({ onClose }) => {
+    const { userIdx } = useAuth();
+    const [userProfile, setUserProfile] = useState({ userId: '', profileImage: '' });
     const [content, setContent] = useState("");
     const [topic, setTopic] = useState("");
     const [img, setImg] = useState(null);
@@ -19,6 +22,31 @@ const ThreadWrite = ({ onClose }) => {
             onClose();
         }
     };
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                const res = await fetch(`http://localhost:8080/api/thread/write/profile?userIdx=${userIdx}`);
+                const data = await res.json();
+
+                if (data.code === 200) {
+                    const profile = data.data;
+                    setUserProfile({
+                        userId: profile.userId,
+                        profileImage: profile.profileImage,
+                    });
+                } else {
+                    toast.error(`사용자 정보 불러오기 실패: ${data.message}`);
+                }
+            } catch (err) {
+                toast.error(`서버 오류: ${err.message}`);
+            }
+        };
+
+        if (userIdx) {
+            fetchUserProfile();
+        }
+    }, [userIdx]);
 
     const checkTopic = (e) => {
         const regex = /^[ㄱ-ㅎ가-힣a-zA-Z0-9\s]*$/;
@@ -68,14 +96,38 @@ const ThreadWrite = ({ onClose }) => {
         }
     }, [preview]);
 
-    const postThread = () => {
-        // 대충 나중에 여기서 서버로 요청넣는다는 말
-        console.log("내용: ", content);
+    const postThread = async () => {
+        if (!content.trim()) return;
+
         const formData = new FormData();
-        if (img) formData.append('img', img);
-        console.log("주제: ", topic)
-        onClose();
-    }
+        formData.append("userIdx", userIdx);
+        formData.append("content", content);
+
+        if (img) {
+            formData.append("images", img);
+        }
+
+        if (topic.trim()) {
+            formData.append("hashtagName", topic.trim());
+        }
+
+        try {
+            const response = await fetch("http://localhost:8080/api/thread/regist", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                toast.success("스레드가 등록되었습니다.");
+                onClose();
+            } else {
+                toast.error(`스레드 등록 실패: ${data.message}`);
+            }
+        } catch (err) {
+            toast.error(`서버 에러: ${err.message}`);
+        }
+    };
 
     return (
         <div className="thread-write-modal-overlay" onMouseDown={handleWriteClose}>
@@ -86,10 +138,14 @@ const ThreadWrite = ({ onClose }) => {
                 </div>
                 <div className="thread-write-box-body">
                     <div className="thread-write-card">
-                        <div className="thread-write-card-img"></div>
+                        <div className="thread-write-card-img">
+                            {userProfile.profileImage && (
+                                <img src={`http://localhost:8080${userProfile.profileImage}`} alt="프로필" className="thread-profile-img" />
+                            )}
+                        </div>
                         <div className="thread-write-card-main">
                             <div className="thread-write-card-top">
-                                <div className="thread-write-card-user-name">requestfield&nbsp;&nbsp;&gt;&nbsp;&nbsp;</div>
+                                <div className="thread-write-card-user-name">{userProfile.userId}&nbsp;&nbsp;&gt;&nbsp;&nbsp;</div>
                                 <input className="thread-write-topic-add" placeholder="주제 추가" value={topic} maxLength={12} onChange={checkTopic} />
                             </div>
                             <div className="thread-write-content">

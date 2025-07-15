@@ -4,6 +4,7 @@
 
 .setting_container {
     min-width: 600px;
+    max-width: 800px;
     height: 800px;
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
@@ -48,15 +49,65 @@
 }
 
 .setting_detail li {
-    display: flex;
-    align-items: end;
-    width: auto;
-    padding: 8px 12px;
-    font-size: 18px;
+    width: 100%;
+    font-size: 16px;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
 }
 
-.setting_detail li svg {
-    margin-left: auto;
+.setting_detail li input {
+    width: 60%;
+    height: 16px;
+    padding: 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.setting_detail_account_save {
+    width: 100%;
+    background-color: #007AFF;
+    color: white;
+    padding: 6px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.setting_delete_toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 0;
+    gap: 6px
+}
+
+.setting_delete_toggle svg {
     font-size: 24px;
+}
+
+.setting_delete_description {
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-line;
+    margin: 20px 0px;
+    color: #444;
+}
+
+.setting_account_delete {
+    background-color: #e53935;
+    color: white;
+    padding: 6px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.setting_account_delete:hover {
+    background-color: #c62828;
 }

@@ -6,6 +6,8 @@
 .profile_container {
   text-align: left;
   background: white;
+  min-width: 600px;
+  max-width: 800px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -15,19 +17,15 @@
 .profile_header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding: 20px;
   gap: 20px;
 }
 
-.profile_pic {
+.profile_pic img {
   width: 96px;
   height: 96px;
-  background: #ccc;
   border-radius: 50%;
-}
-
-.profile_info {
-  height: 96px;
 }
 
 .profile_name {
@@ -100,11 +98,19 @@
 }
 
 .profile-thread-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .profile-thread-list li {
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile_thread_empty {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  padding: 20px 0;
+  font-weight: 500;
 }

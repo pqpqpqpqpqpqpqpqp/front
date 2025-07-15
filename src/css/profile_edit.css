@@ -15,6 +15,7 @@
 
 .profile_edit_card {
   background: #fff;
+  width: 600px;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -22,19 +23,19 @@
 }
 
 .profile_edit_title {
-  margin-bottom: 20px;
+  margin: 0px 0px 16px;
   font-size: 18px;
   font-weight: bold;
 }
 
 .profile_edit_flex {
   display: flex;
-  margin-bottom: 12px;
+  margin: 20px 0px;
 }
 
-.profile_edit_label {
+.profile_edit_div {
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-top: 16px;
 }
 
 .profile_edit_input {
@@ -42,7 +43,6 @@
   border: none;
   border-bottom: 1px solid #ddd;
   padding: 4px 0px;
-  margin-bottom: 12px;
   font-size: 14px;
   outline: none;
 }
@@ -53,6 +53,14 @@
   background: #ccc;
   border-radius: 50%;
   margin-left: auto;
+  cursor: pointer;
+}
+
+.profile_edit_pic img.profile_edit_preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profile_edit_textarea {
@@ -60,6 +68,36 @@
   overflow: hidden;
   box-sizing: border-box;
   font-family: inherit;
+}
+
+.profile_edit_input_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_edit_hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.profile_edit_hashtag {
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  padding-right: 20px;
+}
+
+.profile_edit_tag_remove {
+  margin-left: 4px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .profile_edit_switch {
@@ -84,8 +122,8 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: 0.3s;
-  border-radius: 34px;
+  transition: 0.4s;
+  border-radius: 24px;
 }
 
 .profile_edit_slider::before {
@@ -96,15 +134,15 @@
   left: 3px;
   bottom: 3px;
   background-color: white;
-  transition: 0.3s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
-.profile_edit_switch input:checked + .profile_edit_slider {
-  background-color: #0d6efd;
+.profile_edit_switch input:checked+.profile_edit_slider {
+  background-color: #007AFF;
 }
 
-.profile_edit_switch input:checked + .profile_edit_slider::before {
+.profile_edit_switch input:checked+.profile_edit_slider::before {
   transform: translateX(24px);
 }
 

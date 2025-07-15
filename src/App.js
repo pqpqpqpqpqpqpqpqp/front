@@ -14,7 +14,7 @@ function App() {
       <AuthProvider>
         <SignRouter />
         <ToastContainer
-          autoClose={2000}
+          autoClose={3000}
           hideProgressBar={true}
         />
       </AuthProvider>
@@ -27,7 +27,7 @@ function App() {
         <MainLayout />
       </WriteProvider>
       <ToastContainer
-        autoClose={2000}
+        autoClose={3000}
         hideProgressBar={true}
       />
     </AuthProvider>

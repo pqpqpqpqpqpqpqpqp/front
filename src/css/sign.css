@@ -14,13 +14,38 @@
     gap: 12px;
 }
 
+.sign_form_row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.sign_form_row input {
+    flex: 1;
+}
+
+.sign_form_row button {
+    padding: 10px 12px;
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sign_form_row button:hover {
+    background-color: #d0d0d0;
+}
+
 .sign_form input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    flex-grow: 1;
 }
 
-.sign_form button {
+.sign_form_submit_btn {
     padding: 10px;
     background-color: #2d6cdf;
     color: white;
@@ -29,6 +54,6 @@
     cursor: pointer;
 }
 
-.sign_form button:hover {
+.sign_form_submit_btn:hover {
     background-color: #1a4fbf;
 }

@@ -6,14 +6,19 @@ import 'css/thread_reply.css'
 const ThreadReply = ({ thread }) => {
     const navigate = useNavigate();
 
+    const moveDetail = () => {
+        navigate(`/thread/${thread.threadIdx}`);
+    }
+
     const moveProfile = (e) => {
         e.preventDefault();
-        navigate('/profile');
+        e.stopPropagation()
+        navigate(`/profile/${thread.useridx}`);
     };
 
     return (
         <div className="thread-reply-container">
-            <div className="thread-reply-card">
+            <div className="thread-reply-card" onClick={moveDetail}>
                 <div className="thread-reply-user-img" onClick={moveProfile} />
                 <div className="thread-reply-body">
                     <div className="thread-reply-header">
