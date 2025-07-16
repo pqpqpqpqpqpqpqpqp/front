@@ -5,6 +5,8 @@
 .thread-search-container {
     text-align: left;
     background: white;
+    min-width: 600px;
+    max-width: 800px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -33,12 +35,6 @@
     border-bottom: 2px solid #000;
 }
 
-.thread-search-bar-with-sort {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
 .thread-search-bar {
     width: 100%;
     padding: 10px 12px;
@@ -48,11 +44,6 @@
     outline: none;
     box-sizing: border-box;
     flex-grow: 1;
-}
-
-.thread-search-bar-with-sort select {
-    padding: 6px;
-    border-radius: 4px;
 }
 
 .thread-search-context {

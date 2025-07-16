@@ -18,6 +18,13 @@
   border-radius: 50%;
   margin-right: 12px;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.thread_user_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thread_user_info {

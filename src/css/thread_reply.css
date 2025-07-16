@@ -13,6 +13,13 @@
   background-color: #e5e7eb;
   cursor: pointer;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.thread-reply-user-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thread-reply-body {

@@ -5,9 +5,11 @@ import data from '@emoji-mart/data';
 import { toast } from "react-toastify";
 import 'css/thread_write.css';
 import { useAuth } from "context/AuthContext";
+import { useWrite } from "context/WriteContext";
 
-const ThreadWrite = ({ onClose }) => {
+const ThreadWrite = ({ onClose, initialContent = "" }) => {
     const { userIdx } = useAuth();
+    const { parentIdx } = useWrite();
     const [userProfile, setUserProfile] = useState({ userId: '', profileImage: '' });
     const [content, setContent] = useState("");
     const [topic, setTopic] = useState("");
@@ -16,6 +18,10 @@ const ThreadWrite = ({ onClose }) => {
     const [showPicker, setShowPicker] = useState(false);
     const textRef = useRef(null);
     const pickerRef = useRef(null);
+
+    useEffect(() => {
+        setContent(initialContent || "");
+    }, [initialContent]);
 
     const handleWriteClose = (e) => {
         if (e.target.classList.contains('thread-write-modal-overlay')) {
@@ -109,6 +115,10 @@ const ThreadWrite = ({ onClose }) => {
 
         if (topic.trim()) {
             formData.append("hashtagName", topic.trim());
+        }
+
+        if (parentIdx) {
+            formData.append("parentIdx", parentIdx);
         }
 
         try {

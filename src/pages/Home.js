@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Thread from "components/Thread";
 import { useAuth } from "context/AuthContext";
@@ -6,67 +6,31 @@ import { useWrite } from "context/WriteContext";
 import 'css/home.css';
 
 function Home() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, userIdx } = useAuth();
+  const [threadList, setThreadList] = useState([]);
   const { openWrite } = useWrite();
 
-  const threads = [
-    {
-      threadIdx: 1,
-      userId: 'requestfield',
-      userIdx: 1,
-      content: '123890570984-2107492174-2108934=1-238단 쓰레드',
-      hashtag: '임시',
-      createdAt: '2025-07-01',
-      likes: 6,
-      replies: 2,
-      parentId: null
-    },
-    {
-      threadIdx: 2,
-      userId: 'requestfield',
-      userIdx: 1,
-      content: '235209757147-285-02385=-1284=218940912=-49=-39502836-293417894-단 쓰레드',
-      hashtag: '임시',
-      createdAt: '2025-07-02',
-      likes: 3,
-      replies: 1,
-      parentId: 1
-    },
-    {
-      threadIdx: 3,
-      userId: 'requestfield',
-      userIdx: 1,
-      content: '32903570-3748-1240982136508623094812947091275093285-203-573-076031894=-129=4-85=0823-7509213-491-289-=12395-185-1291=-294단 쓰레드',
-      hashtag: '임시',
-      createdAt: '2025-07-03',
-      likes: 1,
-      replies: 0,
-      parentId: 2
-    },
-    {
-      threadIdx: 4,
-      userId: 'requestfield',
-      userIdx: 1,
-      content: '1.1단 쓰레드',
-      createdAt: '2025-07-03',
-      likes: 1,
-      replies: 0,
-      parentId: 1
-    },
-    {
-      threadIdx: 5,
-      userId: 'requestfield',
-      userIdx: 1,
-      content: '부모자식이 없는 쓰레드',
-      createdAt: '2025-07-03',
-      likes: 1,
-      replies: 0,
-      parentId: null
-    }
-  ];
-
   useEffect(() => {
-  }, [])
+    if (!userIdx) return;
+
+    const fetchThreadList = async () => {
+      try {
+        const res = await fetch(`http://localhost:8080/api/thread/page/feed/recommend?userIdx=${userIdx}`);
+        const data = await res.json();
+        if (data.code === 200) {
+          setThreadList(data.data);
+        } else {
+          toast.error(`스레드 목록 불러오기 실패: ${data.message}`);
+        }
+      } catch (err) {
+        toast.error(`서버 오류: ${err.message}`);
+      }
+    };
+
+    fetchThreadList();
+  }, [userIdx]);
+
+  if (threadList === null) return <div>로딩 중...</div>;
 
   return (
     <div className="home_thread_container">
@@ -93,7 +57,7 @@ function Home() {
             }} >작성</div>
         </div>
 
-        {threads.map((thread) => (
+        {threadList.map((thread) => (
           <li key={thread.threadIdx}>
             <Thread thread={thread} />
           </li>

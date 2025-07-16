@@ -41,6 +41,8 @@
 
 .home_thread_list {
   list-style: none;
+  min-width: 600px;
+  max-width: 800px;
   margin: 0px;
   padding: 16px;
   background-color: white;

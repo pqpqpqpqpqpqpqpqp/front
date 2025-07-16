@@ -36,6 +36,7 @@
   background-color: #e5e7eb;
   cursor: pointer;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .thread-detail-user-id {

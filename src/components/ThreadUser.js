@@ -7,7 +7,9 @@ const ThreadUser = ({ user }) => {
 
     return (
         <div className='thread_user_card' onClick={() => { navigate(`/profile/${user.userIdx}`) }}>
-            <div className="thread_user_img" />
+            <div className="thread_user_img" >
+                <img src={`http://localhost:8080${user.profileImage}`} alt='프로필사진' />
+            </div>
             <div className="thread_user_info">
                 <div className="thread_user_id" >{user.userId}</div>
                 <div className="thread_user_name" >{user.userName}</div>

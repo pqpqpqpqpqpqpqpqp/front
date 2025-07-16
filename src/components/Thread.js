@@ -31,7 +31,6 @@ const Thread = ({ thread }) => {
         <div className="thread-header">
           <div className="thread-user-id" onClick={moveProfile}>{thread.userId}</div>
           {thread.hashtag && <div className="thread-hashtag">&gt;&nbsp;{thread.hashtag}</div>}
-          <div className="thread-date">{thread.createdAt}</div>
         </div>
         <div className="thread-content">{thread.content}</div>
         {thread.fileUrls && (
