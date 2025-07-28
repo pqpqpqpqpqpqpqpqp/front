@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -10,37 +11,33 @@ export function AuthProvider({ children }) {
     const login = (idx) => {
         setIsLoggedIn(true);
         setUserIdx(idx);
+        Cookies.set("userIdx", idx, {
+            expires: 7,
+            path: "/",
+            sameSite: "Lax",
+        });
     };
 
     const logout = async () => {
         try {
             await fetch('http://localhost:8080/api/user/logout', {
                 method: 'POST',
-                credentials: 'include',
             });
         } catch (err) {
             toast.error(`로그아웃 실패: ${err.message}`);
         }
         setIsLoggedIn(false);
         setUserIdx(null);
+        Cookies.remove("userIdx");
     };
 
     useEffect(() => {
         const checkAuth = async () => {
-            try {
-                const res = await fetch('http://localhost:8080/api/user/check/login', {
-                    method: 'GET',
-                    credentials: 'include',
-                });
-                const data = await res.json();
-                if (res.ok && data.code === 200 && data.data) {
-                    login(data.data);
-                }
-            } catch (error) {
-                console.error('자동 로그인 실패:', error);
+            const storedIdx = Cookies.get("userIdx");
+            if (storedIdx) {
+                login(storedIdx);
             }
         };
-
         checkAuth();
     }, []);
 

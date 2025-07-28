@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import MainLayout from "Layout/MainLayout";
+import MainLayout from "layout/MainLayout";
 import SignRouter from "./routers/SignRouter";
 import { AuthProvider } from "context/AuthContext";
 import { WriteProvider } from "context/WriteContext";
